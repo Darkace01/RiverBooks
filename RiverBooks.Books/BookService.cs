@@ -2,7 +2,7 @@
 
 internal class BookService : IBookService
 {
-    public IEnumerable<BookDto> ListBooks()
+    public List<BookDto> ListBooks()
     {
         return
         [
