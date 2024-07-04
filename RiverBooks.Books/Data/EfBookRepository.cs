@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 
-namespace RiverBooks.Books;
+namespace RiverBooks.Books.Data;
 internal class EfBookRepository : IBookRepository
 {
   private readonly BookDbContext _dbContext;

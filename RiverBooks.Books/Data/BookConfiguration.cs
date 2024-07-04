@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace RiverBooks.Books;
+namespace RiverBooks.Books.Data;
 internal class BookConfiguration : IEntityTypeConfiguration<Book>
 {
   internal static readonly Guid Book1Guid = new("A89F6CD7-3D3D-4D3D-8D3D-3D3D3D3D3D3D");

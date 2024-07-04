@@ -1,8 +1,8 @@
 ﻿using FastEndpoints;
 
-namespace RiverBooks.Books;
+namespace RiverBooks.Books.Endpoints;
 
-internal class CreateBookEndpoint(IBookService bookService) :
+internal class Create(IBookService bookService) :
     Endpoint<CreateBookRequest, BookDto>
 {
   private readonly IBookService _bookService = bookService;
@@ -22,6 +22,6 @@ internal class CreateBookEndpoint(IBookService bookService) :
 
     await _bookService.CreateBookAsync(newBookDto, ct);
 
-    await SendCreatedAtAsync<GetBookByIdEndpoint>(new { newBookDto.Id }, newBookDto, cancellation: ct);
+    await SendCreatedAtAsync<GetById>(new { newBookDto.Id }, newBookDto, cancellation: ct);
   }
 }

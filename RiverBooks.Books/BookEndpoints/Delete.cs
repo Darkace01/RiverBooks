@@ -1,7 +1,7 @@
 ﻿using FastEndpoints;
 
-namespace RiverBooks.Books;
-internal class DeleteBookEndpoint(IBookService bookService) :
+namespace RiverBooks.Books.Endpoints;
+internal class Delete(IBookService bookService) :
     Endpoint<DeleteBookRequest>
 {
   private readonly IBookService _bookService = bookService;

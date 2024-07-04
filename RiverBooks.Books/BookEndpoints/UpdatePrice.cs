@@ -1,9 +1,9 @@
 ﻿using FastEndpoints;
 using Microsoft.AspNetCore.Http;
 
-namespace RiverBooks.Books;
+namespace RiverBooks.Books.Endpoints;
 
-internal class UpdateBookPriceEndpoint(IBookService bookService) :
+internal class UpdatePrice(IBookService bookService) :
     Endpoint<UpdateBookPriceRequest, BookDto>
 {
   private readonly IBookService _bookService = bookService;
