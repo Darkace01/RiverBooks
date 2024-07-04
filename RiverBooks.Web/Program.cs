@@ -23,3 +23,7 @@ app.UseHttpsRedirection();
 app.UseFastEndpoints();
 
 await app.RunAsync();
+
+#pragma warning disable S1118 // Utility classes should not have public constructors
+public partial class Program { } // Needed for tests
+#pragma warning restore S1118 // Utility classes should not have public constructors
