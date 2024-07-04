@@ -19,18 +19,20 @@ internal class BookService(IBookRepository bookRepository) : IBookService
 
     if (bookToDelete is not null)
     {
-      await _bookRepository.DeleteAsync(id, cancellationToken);
+      await _bookRepository.DeleteAsync(bookToDelete, cancellationToken);
       await _bookRepository.SaveChangesAsync(cancellationToken);
     }
   }
 
-  public async Task<BookDto> GetBookByIdAsync(Guid id, CancellationToken cancellationToken = default)
+  public async Task<BookDto?> GetBookByIdAsync(Guid id, CancellationToken cancellationToken = default)
   {
     var book = await _bookRepository.GetByIdAsync(id, cancellationToken);
 
     //TODOs: handle not found case
+    if (book is not null)
+      return null;
 
-    return new BookDto(book.Id, book.Title, book.Author, book.Price);
+    return new BookDto(book!.Id, book.Title, book.Author, book.Price);
   }
 
   public async Task<List<BookDto>> ListBooksAsync(CancellationToken cancellationToken = default)
