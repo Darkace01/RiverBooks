@@ -29,7 +29,7 @@ internal class BookService(IBookRepository bookRepository) : IBookService
     var book = await _bookRepository.GetByIdAsync(id, cancellationToken);
 
     //TODOs: handle not found case
-    if (book is not null)
+    if (book is null)
       return null;
 
     return new BookDto(book!.Id, book.Title, book.Author, book.Price);

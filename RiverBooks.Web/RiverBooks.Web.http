@@ -1,4 +1,37 @@
 # @RiverBooks.Web_HostAddress = https://localhost:7086
+@RiverBooks_WebAddress = https://localhost:7086
 
-GET https://localhost:7086/books/
+GET {{RiverBooks_WebAddress}}/books/
 Accept: application/json
+
+###
+
+@BookID=b89f6cd7-3d3d-4d3d-8d3d-3d3d3d3d3d3d
+GET {{RiverBooks_WebAddress}}/books/{{BookID}}
+Accept: application/json
+
+###
+
+POST {{RiverBooks_WebAddress}}/books/
+Accept: application/json
+Content-Type: application/json
+{
+  "id": "d89f6cd7-3d3d-4d3d-8d3d-3d3d3d3d3d3d",
+  "title": "The River",
+  "author": "Peter Heller",
+  "price": 15.99
+}
+
+###
+DELETE {{RiverBooks_WebAddress}}/books/d89f6cd7-3d3d-4d3d-8d3d-3d3d3d3d3d3d
+Accept: application/json
+
+###
+
+POST {{RiverBooks_WebAddress}}/books/{{BookID}}/pricehistory
+Accept: application/json
+Content-Type: application/json
+{
+  "id": "{{BookID}}",
+  "price": 15.90
+}
