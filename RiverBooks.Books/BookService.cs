@@ -1,14 +1,53 @@
-﻿namespace RiverBooks.Books;
+﻿
+namespace RiverBooks.Books;
 
-internal class BookService : IBookService
+internal class BookService(IBookRepository bookRepository) : IBookService
 {
-    public List<BookDto> ListBooks()
+  private readonly IBookRepository _bookRepository = bookRepository;
+
+  public async Task CreateBookAsync(BookDto newBook, CancellationToken cancellationToken = default)
+  {
+    var book = new Book(newBook.Id, newBook.Title, newBook.Author, newBook.Price);
+
+    await _bookRepository.AddAsync(book, cancellationToken);
+    await _bookRepository.SaveChangesAsync(cancellationToken);
+  }
+
+  public async Task DeleteBookAsync(Guid id, CancellationToken cancellationToken = default)
+  {
+    var bookToDelete = await _bookRepository.GetByIdAsync(id);
+
+    if (bookToDelete is not null)
     {
-        return
-        [
-            new BookDto(Guid.NewGuid(), "The Fellowship of the Ring", "J.R.R. Tolkien"),
-            new BookDto(Guid.NewGuid(), "The Two Towers", "J.R.R. Tolkien"),
-            new BookDto(Guid.NewGuid(), "The Return of the King", "J.R.R. Tolkien")
-        ];
+      await _bookRepository.DeleteAsync(id, cancellationToken);
+      await _bookRepository.SaveChangesAsync(cancellationToken);
     }
+  }
+
+  public async Task<BookDto> GetBookByIdAsync(Guid id, CancellationToken cancellationToken = default)
+  {
+    var book = await _bookRepository.GetByIdAsync(id, cancellationToken);
+
+    //TODOs: handle not found case
+
+    return new BookDto(book.Id, book.Title, book.Author, book.Price);
+  }
+
+  public async Task<List<BookDto>> ListBooksAsync(CancellationToken cancellationToken = default)
+  {
+    var books = (await _bookRepository.ListAsync(cancellationToken))
+        .Select(b => new BookDto(b.Id, b.Title, b.Author, b.Price))
+        .ToList();
+    return books;
+  }
+
+  public async Task UpdateBookPriceAsync(Guid id, decimal newPrice, CancellationToken cancellationToken = default)
+  {
+    // validate the price
+    var book = await _bookRepository.GetByIdAsync(id, cancellationToken);
+
+    // handle not found case
+    book!.UpdatePrice(newPrice);
+    await _bookRepository.SaveChangesAsync(cancellationToken);
+  }
 }

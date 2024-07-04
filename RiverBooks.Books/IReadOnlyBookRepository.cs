@@ -2,6 +2,6 @@
 
 internal interface IReadOnlyBookRepository
 {
-  Task<Book> GetByIdAsync(Guid id);
-  Task<List<Book>> ListAsync();
+  Task<Book> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+  Task<List<Book>> ListAsync(CancellationToken cancellationToken = default);
 }
