@@ -1,10 +1,25 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Ardalis.GuardClauses;
+using Microsoft.AspNetCore.Identity;
 
 namespace RiverBooks.Users;
 
-#pragma warning disable S2094 // Classes should not be empty
 public class ApplicationUser : IdentityUser
-#pragma warning restore S2094 // Classes should not be empty
 {
+  public string FullName { get; set; } = string.Empty;
+  private readonly List<CartItem> _cartItems = [];
+  public IReadOnlyCollection<CartItem> CartItems => _cartItems.AsReadOnly();
 
+  public void AddItemToCart(CartItem item)
+  {
+    Guard.Against.Null(item);
+
+    var existingItem = _cartItems.SingleOrDefault(i => i.BookId == item.BookId);
+    if (existingItem is not null)
+    {
+      existingItem.UpdateQuantity(existingItem.Quantity + item.Quantity);
+      //TODOs: What to do if other details of the item have been updated?
+      return;
+    }
+    _cartItems.Add(item);
+  }
 }

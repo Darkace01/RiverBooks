@@ -53,5 +53,22 @@ Content-Type: application/json
   "password": "Passw0rd!"
 }
 
-@token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbEFkZHJlc3MiOiJrYXplZW1AdGVzdC5jb20iLCJpYXQiOjE3MjAxOTk3ODksImV4cCI6MTcyMDIwMzM4OSwibmJmIjoxNzIwMTk5Nzg5fQ.z-nTO0OZJ2ZPway78fuu7pT_-uD7iNP4cf6VaeSmDQ8
 ###
+@token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbEFkZHJlc3MiOiJrYXplZW1AdGVzdC5jb20iLCJpYXQiOjE3MjAyMTIyMTIsImV4cCI6MTcyMDIxNTgxMiwibmJmIjoxNzIwMjEyMjEyfQ.BlsfvWlBNGEcvqvTKui5YdUMsgO41o9UQDdgXOVFPVI
+###
+# Add item to cart
+POST {{RiverBooks_WebAddress}}/cart
+Accept: application/json
+Authorization: Bearer {{token}}
+Content-Type: application/json
+{
+  "bookId": "{{BookID}}",
+  "quantity": 1
+}
+
+###
+
+#List items in cart
+GET {{RiverBooks_WebAddress}}/cart
+Accept: application/json
+Authorization: Bearer {{token}}

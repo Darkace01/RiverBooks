@@ -2,11 +2,11 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace RiverBooks.Users;
+namespace RiverBooks.Users.Data;
 
 public class UsersDbContext(DbContextOptions<UsersDbContext> options) : IdentityDbContext(options)
 {
-  public DbSet<ApplicationUser> applicationUsers { get; set; }
+  public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
   protected override void OnModelCreating(ModelBuilder builder)
   {
