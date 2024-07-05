@@ -20,5 +20,8 @@
     <PackageReference Include="FastEndpoints" Version="5.27.0" />
     <PackageReference Include="Ardalis.GuardClauses" Version="4.5.0" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RiverBooks.Books.Contracts\RiverBooks.Books.Contracts.csproj" />
+  </ItemGroup>
 
 </Project>

@@ -18,6 +18,8 @@ public class ApplicationUser : IdentityUser
     {
       existingItem.UpdateQuantity(existingItem.Quantity + item.Quantity);
       //TODOs: What to do if other details of the item have been updated?
+      existingItem.UpdateDescription(item.Description);
+      existingItem.UpdateUnitPrice(item.UnitPrice);
       return;
     }
     _cartItems.Add(item);
