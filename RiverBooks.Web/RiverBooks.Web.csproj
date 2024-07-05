@@ -1,7 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
   <ItemGroup>
-    <PackageReference Include="FastEndpoints" Version="5.26.0" />
+    <PackageReference Include="FastEndpoints" Version="5.27.0" />
+    <PackageReference Include="FastEndpoints.Security" Version="5.27.0" />
+    <PackageReference Include="FastEndpoints.Swagger" Version="5.27.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

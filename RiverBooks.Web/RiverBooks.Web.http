@@ -1,4 +1,3 @@
-# @RiverBooks.Web_HostAddress = https://localhost:7086
 @RiverBooks_WebAddress = https://localhost:7086
 
 GET {{RiverBooks_WebAddress}}/books/
@@ -35,3 +34,24 @@ Content-Type: application/json
   "id": "{{BookID}}",
   "price": 15.90
 }
+
+### Users
+POST {{RiverBooks_WebAddress}}/users/
+Accept: application/json
+Content-Type: application/json
+{
+  "email": "kazeem@test.com",
+  "password": "Passw0rd!"
+}
+
+###
+POST {{RiverBooks_WebAddress}}/users/login
+Accept: application/json
+Content-Type: application/json
+{
+  "email": "kazeem@test.com",
+  "password": "Passw0rd!"
+}
+
+@token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbEFkZHJlc3MiOiJrYXplZW1AdGVzdC5jb20iLCJpYXQiOjE3MjAxOTk3ODksImV4cCI6MTcyMDIwMzM4OSwibmJmIjoxNzIwMTk5Nzg5fQ.z-nTO0OZJ2ZPway78fuu7pT_-uD7iNP4cf6VaeSmDQ8
+###
