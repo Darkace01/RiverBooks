@@ -1,5 +1,6 @@
 ﻿using FastEndpoints;
 using RiverBooks.Books;
+using RiverBooks.Users;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
@@ -8,6 +9,7 @@ builder.Services.AddFastEndpoints();
 
 // Add Module Services
 builder.Services.AddBookServices(builder.Configuration);
+builder.Services.AddUserModuleServices(builder.Configuration);
 
 var app = builder.Build();
 
