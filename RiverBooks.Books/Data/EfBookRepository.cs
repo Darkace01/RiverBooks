@@ -2,14 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 
 namespace RiverBooks.Books.Data;
-internal class EfBookRepository : IBookRepository
+internal class EfBookRepository(BookDbContext dbContext) : IBookRepository
 {
-  private readonly BookDbContext _dbContext;
-
-  public EfBookRepository(BookDbContext dbContext)
-  {
-    _dbContext = dbContext;
-  }
+  private readonly BookDbContext _dbContext = dbContext;
 
   public Task AddAsync(Book book, CancellationToken cancellationToken = default)
   {

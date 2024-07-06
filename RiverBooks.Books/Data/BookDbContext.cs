@@ -3,13 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RiverBooks.Books.Data;
 
-public class BookDbContext : DbContext
+public class BookDbContext(DbContextOptions<BookDbContext> options) : DbContext(options)
 {
   internal DbSet<Book> Books { get; set; }
-
-  public BookDbContext(DbContextOptions<BookDbContext> options) : base(options)
-  {
-  }
 
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
