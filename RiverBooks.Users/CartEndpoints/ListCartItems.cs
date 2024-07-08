@@ -2,7 +2,7 @@
 using Ardalis.Result;
 using FastEndpoints;
 using MediatR;
-using RiverBooks.Users.UseCases;
+using RiverBooks.Users.UseCases.Cart.ListItems;
 namespace RiverBooks.Users.CartEndpoints;
 
 internal class ListCartItems(IMediator _mediator) : EndpointWithoutRequest<CartResponse>

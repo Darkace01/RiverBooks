@@ -54,7 +54,7 @@ Content-Type: application/json
 }
 
 ###
-@token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbEFkZHJlc3MiOiJrYXplZW1AdGVzdC5jb20iLCJpYXQiOjE3MjA0NDI2NTksImV4cCI6MTcyMDQ0NjI1OSwibmJmIjoxNzIwNDQyNjU5fQ.nXzSWT4ia4NNz3R9mcYOSMfvqLjThMqreLm9WxJR1sA
+@token=
 ###
 # Add item to cart
 POST {{RiverBooks_WebAddress}}/cart
@@ -74,6 +74,18 @@ Accept: application/json
 Authorization: Bearer {{token}}
 
 ###
+# List all orders
 GET {{RiverBooks_WebAddress}}/orders
 Accept: application/json
 Authorization: Bearer {{token}}
+
+###
+# Checkout Cart
+POST {{RiverBooks_WebAddress}}/cart/checkout
+Accept: application/json
+Authorization: Bearer {{token}}
+Content-Type: application/json
+{
+  "shippingAddressId": "d89f6cd7-3d3d-4d3d-8d3d-3d3d3d3d3d3d",
+  "billingAddressId": "d89f6cd7-3d3d-4d3d-8d3d-3d3d3d3d3d3d"
+}
