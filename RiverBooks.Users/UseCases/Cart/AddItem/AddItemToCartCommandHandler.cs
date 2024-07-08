@@ -2,10 +2,7 @@
 using MediatR;
 using RiverBooks.Books.Contracts;
 
-namespace RiverBooks.Users.UseCases;
-
-public record AddItemToCartCommand(Guid BookId, int Quantity, string EmailAddress)
-  : IRequest<Result>;
+namespace RiverBooks.Users.UseCases.Cart.AddItem;
 
 public class AddItemToCartCommandHandler(IApplicationUserRepository _userRepository, IMediator _mediator) : IRequestHandler<AddItemToCartCommand, Result>
 {
@@ -24,7 +21,7 @@ public class AddItemToCartCommandHandler(IApplicationUserRepository _userReposit
     if (bookDetailsRequest.Status == ResultStatus.NotFound) return Result.NotFound();
     var bookDetails = bookDetailsRequest.Value;
 
-    string decription = $"{bookDetails.Title} by {bookDetails.Author}";
+    var decription = $"{bookDetails.Title} by {bookDetails.Author}";
 
     var newCartItem = new CartItem(request.BookId,
                                    decription,

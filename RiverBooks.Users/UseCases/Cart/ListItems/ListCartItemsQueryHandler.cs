@@ -1,9 +1,7 @@
 ﻿using Ardalis.Result;
 using MediatR;
 
-namespace RiverBooks.Users.UseCases;
-
-public record ListCartItemsQuery(string EmailAddress) : IRequest<Result<List<CartItemDto>>>;
+namespace RiverBooks.Users.UseCases.Cart.ListItems;
 
 internal class ListCartItemsQueryHandler(IApplicationUserRepository userRepository) : IRequestHandler<ListCartItemsQuery, Result<List<CartItemDto>>>
 {

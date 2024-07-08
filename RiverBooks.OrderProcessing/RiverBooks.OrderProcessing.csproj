@@ -16,4 +16,7 @@
     <PackageReference Include="FastEndpoints" Version="5.27.0" />
     <PackageReference Include="Ardalis.GuardClauses" Version="4.5.0" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OrderProcessing.Contracts\OrderProcessing.Contracts.csproj" />
+  </ItemGroup>
 </Project>
