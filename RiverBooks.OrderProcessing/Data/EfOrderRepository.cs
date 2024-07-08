@@ -6,7 +6,9 @@ internal class EfOrderRepository(OrderProcessingDbContext dbContext) : IOrderRep
 {
   public async Task<List<Order>> ListAsync(CancellationToken cancellationToken = default)
   {
-    return await dbContext.Orders.ToListAsync(cancellationToken);
+    return await dbContext.Orders
+      .Include(o => o.OrderItems)
+      .ToListAsync(cancellationToken);
   }
 
   public async Task AddAsync(Order order, CancellationToken cancellationToken = default)
