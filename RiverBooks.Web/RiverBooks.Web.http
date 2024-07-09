@@ -54,7 +54,7 @@ Content-Type: application/json
 }
 
 ###
-@token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbEFkZHJlc3MiOiJrYXplZW1AdGVzdC5jb20iLCJpYXQiOjE3MjA0ODI2NDgsImV4cCI6MTcyMDQ4NjI0OCwibmJmIjoxNzIwNDgyNjQ4fQ.OrBz0l8ETOnMwjA1zMZ_9t7RUNwYVTHqPACtnKl4WNQ
+@token=
 ###
 # Add item to cart
 POST {{RiverBooks_WebAddress}}/cart

@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using OrderProcessing.Contracts;
 
 namespace RiverBooks.OrderProcessing.Integrations;
-internal class CreateOrderCommandHandler(IOrderRepository _orderRepository,ILogger<CreateOrderCommandHandler> _logger) : IRequestHandler<CreateOrderCommand, Result<OrderDetailsResponse>>
+internal class CreateOrderCommandHandler(IOrderRepository _orderRepository,ILogger<CreateOrderCommandHandler> _logger, IOrderAddressCache _addressCache) : IRequestHandler<CreateOrderCommand, Result<OrderDetailsResponse>>
 {
   public async Task<Result<OrderDetailsResponse>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
   {
@@ -13,12 +13,13 @@ internal class CreateOrderCommandHandler(IOrderRepository _orderRepository,ILogg
                                                                item.UnitPrice,
                                                                item.Description)).ToList();
 
-    var shippingAddressId = new Address("123 Main St","", "Anytown", "USA", "12345", "Home");
-    var billingAddressId = shippingAddressId;
+    
+    var shippingAddress = await _addressCache.GetByIdAsync(request.ShippingAddressId);
+    var billingAddress = await _addressCache.GetByIdAsync(request.BillingAddressId);
 
     var newOrder = Order.Factory.Create(request.UserId,
-                                        shippingAddressId,
-                                        billingAddressId,
+                                        shippingAddress.Value.Address,
+                                        billingAddress.Value.Address,
                                         items);
 
     await _orderRepository.AddAsync(newOrder, cancellationToken);

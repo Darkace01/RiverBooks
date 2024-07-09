@@ -15,6 +15,7 @@
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
     <PackageReference Include="FastEndpoints" Version="5.27.0" />
     <PackageReference Include="Ardalis.GuardClauses" Version="4.5.0" />
+    <PackageReference Include="StackExchange.Redis" Version="2.8.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OrderProcessing.Contracts\OrderProcessing.Contracts.csproj" />
