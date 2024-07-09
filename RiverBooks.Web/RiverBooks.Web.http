@@ -54,7 +54,7 @@ Content-Type: application/json
 }
 
 ###
-@token=
+@token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbEFkZHJlc3MiOiJrYXplZW1AdGVzdC5jb20iLCJpYXQiOjE3MjA0ODI2NDgsImV4cCI6MTcyMDQ4NjI0OCwibmJmIjoxNzIwNDgyNjQ4fQ.OrBz0l8ETOnMwjA1zMZ_9t7RUNwYVTHqPACtnKl4WNQ
 ###
 # Add item to cart
 POST {{RiverBooks_WebAddress}}/cart
@@ -86,6 +86,27 @@ Accept: application/json
 Authorization: Bearer {{token}}
 Content-Type: application/json
 {
-  "shippingAddressId": "d89f6cd7-3d3d-4d3d-8d3d-3d3d3d3d3d3d",
-  "billingAddressId": "d89f6cd7-3d3d-4d3d-8d3d-3d3d3d3d3d3d"
+  "shippingAddressId": "28943c78-0beb-4968-b406-1a7eaa7043b7",
+  "billingAddressId": "28943c78-0beb-4968-b406-1a7eaa7043b7"
+}
+
+###
+# List Addresses
+GET {{RiverBooks_WebAddress}}/users/addresses
+Accept: application/json
+Authorization: Bearer {{token}}
+
+###
+# Add Address to User
+POST {{RiverBooks_WebAddress}}/users/addresses
+Accept: application/json
+Authorization: Bearer {{token}}
+Content-Type: application/json
+{
+  "street1": "123 Main St",
+  "street2": "Apt 1",
+  "city": "Denver",
+  "state": "CO",
+  "postalCode": "80202",
+  "country": "USA"
 }
