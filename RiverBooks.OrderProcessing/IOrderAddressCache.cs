@@ -4,11 +4,12 @@ using Ardalis.Result;
 using Microsoft.Extensions.Logging;
 using StackExchange.Redis;
 
-namespace RiverBooks.OrderProcessing.Integrations;
+namespace RiverBooks.OrderProcessing;
 
 internal interface IOrderAddressCache
 {
   Task<Result<OrderAddress>> GetByIdAsync(Guid id);
+  Task<Result> StoreAsync(OrderAddress orderAddress);
 }
 
 internal class RedisOrderAddressCache :
@@ -37,5 +38,16 @@ internal class RedisOrderAddressCache :
     var address = JsonSerializer.Deserialize<OrderAddress>(fetchedJson);
 
     return Result.Success(address!);
+  }
+
+  public async Task<Result> StoreAsync(OrderAddress orderAddress)
+  {
+    var key = orderAddress.Id.ToString();
+    var addressJson = JsonSerializer.Serialize(orderAddress);
+
+    await _db.StringSetAsync(key, addressJson);
+    _logger.LogInformation("Address {Id} stored in {Db}", orderAddress.Id, "REDIS");
+
+    return Result.Success();
   }
 }

@@ -1,10 +1,10 @@
-﻿using System.Net.Sockets;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using Ardalis.GuardClauses;
 using Microsoft.AspNetCore.Identity;
 
 namespace RiverBooks.Users;
 
-public class ApplicationUser : IdentityUser
+public class ApplicationUser : IdentityUser, IHaveDomainEvents
 {
   public string FullName { get; set; } = string.Empty;
   private readonly List<CartItem> _cartItems = [];
@@ -13,6 +13,12 @@ public class ApplicationUser : IdentityUser
   private readonly List<UserStreetAddress> _addresses = [];
   public IReadOnlyCollection<UserStreetAddress> Addresses => _addresses.AsReadOnly();
 
+  private readonly List<DomainEventBase> _domainEvents = [];
+  [NotMapped]
+  public IEnumerable<DomainEventBase> DomainEvents => _domainEvents.AsReadOnly();
+
+  protected void RegisterDomainEvent(DomainEventBase domainEvent) => _domainEvents.Add(domainEvent);
+  void IHaveDomainEvents.CLearDomainEvents() => _domainEvents.Clear();
   public void AddItemToCart(CartItem item)
   {
     Guard.Against.Null(item);
@@ -35,13 +41,16 @@ public class ApplicationUser : IdentityUser
 
     // find existing address and just return it
     var existingAddress = _addresses.SingleOrDefault(a => a.StreetAddress == address);
-    if(existingAddress is not null)
+    if (existingAddress is not null)
     {
       return existingAddress;
     }
 
     var newAddress = new UserStreetAddress(Id, address);
     _addresses.Add(newAddress);
+
+    var domainEvent = new AddressAddedEvent(newAddress);
+    RegisterDomainEvent(domainEvent);
 
     return newAddress;
   }

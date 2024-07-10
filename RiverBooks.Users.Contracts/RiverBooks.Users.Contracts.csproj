@@ -6,10 +6,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Ardalis.Result" Version="9.1.0" />
     <PackageReference Include="MediatR" Version="12.3.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RiverBooks.Users.Contracts\RiverBooks.Users.Contracts.csproj" />
   </ItemGroup>
 </Project>

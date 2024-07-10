@@ -24,9 +24,7 @@
     <ProjectReference Include="..\OrderProcessing.Contracts\OrderProcessing.Contracts.csproj" />
     <ProjectReference Include="..\RiverBooks.Books.Contracts\RiverBooks.Books.Contracts.csproj" />
     <ProjectReference Include="..\RiverBooks.OrderProcessing\RiverBooks.OrderProcessing.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Integrations\" />
+    <ProjectReference Include="..\RiverBooks.Users.Contracts\RiverBooks.Users.Contracts.csproj" />
   </ItemGroup>
 
 </Project>

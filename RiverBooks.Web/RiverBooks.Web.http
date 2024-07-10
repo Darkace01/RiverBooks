@@ -54,7 +54,7 @@ Content-Type: application/json
 }
 
 ###
-@token=
+@token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbEFkZHJlc3MiOiJrYXplZW1AdGVzdC5jb20iLCJpYXQiOjE3MjA2MjQ2NzUsImV4cCI6MTcyMDYyODI3NSwibmJmIjoxNzIwNjI0Njc1fQ.M6FDP_vY4L6EDI723om4UMFXY5N-Er1ZiyuQirB_b54
 ###
 # Add item to cart
 POST {{RiverBooks_WebAddress}}/cart
@@ -86,8 +86,8 @@ Accept: application/json
 Authorization: Bearer {{token}}
 Content-Type: application/json
 {
-  "shippingAddressId": "28943c78-0beb-4968-b406-1a7eaa7043b7",
-  "billingAddressId": "28943c78-0beb-4968-b406-1a7eaa7043b7"
+  "shippingAddressId": "0c741034-6e5b-4978-b76b-a06cc6858e6e",
+  "billingAddressId": "0c741034-6e5b-4978-b76b-a06cc6858e6e"
 }
 
 ###
@@ -103,7 +103,7 @@ Accept: application/json
 Authorization: Bearer {{token}}
 Content-Type: application/json
 {
-  "street1": "123 Main St",
+  "street1": "54321 Main St",
   "street2": "Apt 1",
   "city": "Denver",
   "state": "CO",

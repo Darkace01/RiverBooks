@@ -24,6 +24,9 @@ public static class UserModuleServiceExtensions
     // Add User Serices
     services.AddScoped<IApplicationUserRepository, EfApplicationUserRepository>();
 
+    // Add MediatR Domain Event Dispatcher
+    services.AddScoped<IDomainEventDispatcher,MediatRDomainEventDispatcher>();
+
     // if using MediatR in this module, add any assemblies that contain handlers to the list
     mediatRAssemblies.Add(typeof(UserModuleServiceExtensions).Assembly);
 
