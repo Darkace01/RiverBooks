@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace RiverBooks.Users.Data;
 
