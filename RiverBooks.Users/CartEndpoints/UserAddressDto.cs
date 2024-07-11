@@ -1,4 +1,4 @@
-﻿namespace RiverBooks.Users;
+﻿namespace RiverBooks.Users.CartEndpoints;
 
 public record UserAddressDto(Guid id,
                               string Street1,
