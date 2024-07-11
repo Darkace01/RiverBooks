@@ -1,5 +1,6 @@
 ﻿using System.Security.Claims;
 using Ardalis.Result;
+using Ardalis.Result.AspNetCore;
 using FastEndpoints;
 using MediatR;
 using RiverBooks.Users.UseCases.Cart.AddItem;
@@ -24,6 +25,12 @@ internal class AddItem(IMediator _mediator) : Endpoint<AddCartItemRequest>
     if (result.Status == ResultStatus.Unauthorized)
     {
       await SendUnauthorizedAsync(ct);
+      return;
+    }
+
+    if(result.Status == ResultStatus.Invalid)
+    {
+      await SendResultAsync(result.ToMinimalApiResult());
       return;
     }
 

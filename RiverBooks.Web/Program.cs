@@ -7,6 +7,7 @@ using RiverBooks.Users;
 using RiverBooks.OrderProcessing;
 using Serilog;
 using RiverBooks.SharedKernel;
+using RiverBooks.Users.UseCases.Cart.AddItem;
 
 var logger = Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
@@ -36,7 +37,9 @@ builder.Services.AddOrderProcessingModuleServices(builder.Configuration, logger,
 // Set up MediatR
 builder.Services.AddMediatR(cfg =>
   cfg.RegisterServicesFromAssemblies([.. mediatRAssemblies]));
-
+builder.Services.AddMediatRLogginBehavior();
+builder.Services.AddMediatRFluentValidationBehavior();
+builder.Services.AddValidatorsFromAssemblyContaining<AddItemToCartCommandValidator>();
 // Add MediatR Domain Event Dispatcher
 builder.Services.AddScoped<IDomainEventDispatcher, MediatRDomainEventDispatcher>();
 
