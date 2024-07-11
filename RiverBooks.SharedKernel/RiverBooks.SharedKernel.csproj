@@ -9,7 +9,4 @@
     <PackageReference Include="MediatR" Version="12.3.0" />
     <PackageReference Include="Ardalis.Result" Version="9.1.0" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\RiverBooks.SharedKernel\RiverBooks.SharedKernel.csproj" />
-  </ItemGroup>
 </Project>

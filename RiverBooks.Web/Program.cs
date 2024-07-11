@@ -6,6 +6,7 @@ using RiverBooks.Books;
 using RiverBooks.Users;
 using RiverBooks.OrderProcessing;
 using Serilog;
+using RiverBooks.SharedKernel;
 
 var logger = Log.Logger = new LoggerConfiguration()
     .Enrich.FromLogContext()
@@ -35,6 +36,9 @@ builder.Services.AddOrderProcessingModuleServices(builder.Configuration, logger,
 // Set up MediatR
 builder.Services.AddMediatR(cfg =>
   cfg.RegisterServicesFromAssemblies([.. mediatRAssemblies]));
+
+// Add MediatR Domain Event Dispatcher
+builder.Services.AddScoped<IDomainEventDispatcher, MediatRDomainEventDispatcher>();
 
 var app = builder.Build();
 

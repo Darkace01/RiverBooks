@@ -2,6 +2,8 @@
 using MediatR;
 using Microsoft.Extensions.Logging;
 using OrderProcessing.Contracts;
+using RiverBooks.OrderProcessing.Domain;
+using RiverBooks.OrderProcessing.Interfaces;
 
 namespace RiverBooks.OrderProcessing.Integrations;
 internal class CreateOrderCommandHandler(IOrderRepository _orderRepository,ILogger<CreateOrderCommandHandler> _logger, IOrderAddressCache _addressCache) : IRequestHandler<CreateOrderCommand, Result<OrderDetailsResponse>>

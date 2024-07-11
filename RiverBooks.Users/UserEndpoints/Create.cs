@@ -1,6 +1,7 @@
 ﻿using FastEndpoints;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using RiverBooks.Users.Domain;
 
 namespace RiverBooks.Users.UserEndpoints;
 

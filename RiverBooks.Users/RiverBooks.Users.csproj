@@ -24,6 +24,7 @@
     <ProjectReference Include="..\OrderProcessing.Contracts\OrderProcessing.Contracts.csproj" />
     <ProjectReference Include="..\RiverBooks.Books.Contracts\RiverBooks.Books.Contracts.csproj" />
     <ProjectReference Include="..\RiverBooks.OrderProcessing\RiverBooks.OrderProcessing.csproj" />
+    <ProjectReference Include="..\RiverBooks.SharedKernel\RiverBooks.SharedKernel.csproj" />
     <ProjectReference Include="..\RiverBooks.Users.Contracts\RiverBooks.Users.Contracts.csproj" />
   </ItemGroup>
 

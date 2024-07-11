@@ -27,9 +27,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OrderProcessing Module", "O
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiverBooks.OrderProcessing", "RiverBooks.OrderProcessing\RiverBooks.OrderProcessing.csproj", "{444D6D57-55FD-4417-A21F-FE0CA261F8C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProcessing.Contracts", "OrderProcessing.Contracts\OrderProcessing.Contracts.csproj", "{B1EC4C52-6E5A-4272-BD11-5C7EB3557416}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderProcessing.Contracts", "OrderProcessing.Contracts\OrderProcessing.Contracts.csproj", "{B1EC4C52-6E5A-4272-BD11-5C7EB3557416}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiverBooks.Users.Contracts", "RiverBooks.Users.Contracts\RiverBooks.Users.Contracts.csproj", "{E09AA569-14BD-4C85-ACEB-8E4CE952AA82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RiverBooks.Users.Contracts", "RiverBooks.Users.Contracts\RiverBooks.Users.Contracts.csproj", "{E09AA569-14BD-4C85-ACEB-8E4CE952AA82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RiverBooks.SharedKernel", "RiverBooks.SharedKernel\RiverBooks.SharedKernel.csproj", "{40C2A2A8-52A2-4D69-937E-B4B2DDA69A8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{E09AA569-14BD-4C85-ACEB-8E4CE952AA82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E09AA569-14BD-4C85-ACEB-8E4CE952AA82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E09AA569-14BD-4C85-ACEB-8E4CE952AA82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40C2A2A8-52A2-4D69-937E-B4B2DDA69A8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40C2A2A8-52A2-4D69-937E-B4B2DDA69A8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40C2A2A8-52A2-4D69-937E-B4B2DDA69A8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40C2A2A8-52A2-4D69-937E-B4B2DDA69A8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

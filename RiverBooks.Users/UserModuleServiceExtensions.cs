@@ -1,7 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using RiverBooks.Users.Data;
+using RiverBooks.SharedKernel;
+using RiverBooks.Users.Domain;
+using RiverBooks.Users.Infrastructure.Data;
+using RiverBooks.Users.Interfaces;
 using Serilog;
 
 namespace RiverBooks.Users;
@@ -25,8 +28,7 @@ public static class UserModuleServiceExtensions
     services.AddScoped<IApplicationUserRepository, EfApplicationUserRepository>();
     services.AddScoped<IReadOnlyUserStreetAddressRepository, EfIUserStreetAddressRepository>();
 
-    // Add MediatR Domain Event Dispatcher
-    services.AddScoped<IDomainEventDispatcher,MediatRDomainEventDispatcher>();
+
 
     // if using MediatR in this module, add any assemblies that contain handlers to the list
     mediatRAssemblies.Add(typeof(UserModuleServiceExtensions).Assembly);
