@@ -3,7 +3,7 @@ using MediatR;
 using RiverBooks.Users.CartEndpoints;
 using RiverBooks.Users.Interfaces;
 
-namespace RiverBooks.Users.UseCases.User;
+namespace RiverBooks.Users.UseCases.User.ListAddresses;
 
 internal class ListAddressesQueryHandler(IApplicationUserRepository _userRepository) :
     IRequestHandler<ListAddressesQuery, Result<List<UserAddressDto>>>

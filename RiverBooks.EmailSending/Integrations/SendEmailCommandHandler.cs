@@ -1,5 +1,6 @@
 ﻿using Ardalis.Result;
 using MediatR;
+using RiverBooks.EmailSending.Contracts;
 
 namespace RiverBooks.EmailSending.Integrations;
 internal class SendEmailCommandHandler(ISendEmail emailSender) :

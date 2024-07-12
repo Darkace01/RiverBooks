@@ -40,7 +40,7 @@ POST {{RiverBooks_WebAddress}}/users/
 Accept: application/json
 Content-Type: application/json
 {
-  "email": "kazeem@test.com",
+  "email": "kazeem127@test.com",
   "password": "Passw0rd!"
 }
 
@@ -49,7 +49,7 @@ POST {{RiverBooks_WebAddress}}/users/login
 Accept: application/json
 Content-Type: application/json
 {
-  "email": "kazeem@test.com",
+  "email": "kazeem12@test.com",
   "password": "Passw0rd!"
 }
 
