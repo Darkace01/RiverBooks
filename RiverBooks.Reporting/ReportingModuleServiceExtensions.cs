@@ -13,7 +13,7 @@ public static class ReportingModuleServiceExtensions
     List<System.Reflection.Assembly> mediatRAssemblies)
   {
     // Add User Serices
-
+    services.AddScoped<ITopSellingBooksReportService, TopSellingBooksReportService>();
     // if using MediatR in this module, add any assemblies that contain handlers to the list
     mediatRAssemblies.Add(typeof(ReportingModuleServiceExtensions).Assembly);
 

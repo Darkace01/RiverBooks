@@ -1,9 +1,20 @@
 ﻿using FastEndpoints;
+using Microsoft.AspNetCore.Mvc;
 
-namespace RiverBooks.Reporting.ReportingEndpoints;
-internal record TopSalesByMonthRequest(int Year, int Month);
-internal record TopSalesByMonthResponse(string Report);
-internal class TopSalesByMonth :
+namespace RiverBooks.Reporting;
+internal class TopSalesByMonthRequest
+{
+  [FromQuery]
+  public int Month { get; set; }
+  [FromQuery]
+  public int Year { get; set; }
+}
+
+internal record TopSalesByMonthResponse
+{
+  public TopBooksByMonthReport Report { get; set; } = default!;
+}
+internal class TopSalesByMonth(ITopSellingBooksReportService reportService) :
   Endpoint<TopSalesByMonthRequest, TopSalesByMonthResponse>
 {
   public override void Configure()
@@ -12,13 +23,14 @@ internal class TopSalesByMonth :
     AllowAnonymous(); // TODOs: Lock down
   }
 
-    public override async Task HandleAsync(
-        TopSalesByMonthRequest request, CancellationToken ct)
+  public override async Task HandleAsync(
+      TopSalesByMonthRequest request, CancellationToken ct)
+  {
+    var report = reportService.ReachInSqlQuery(request.Month, request.Year);
+    var response = new TopSalesByMonthResponse()
     {
-        var response = new TopSalesByMonthResponse("Hello, World!")
-        {
-            Report = "Hello, World!"
-        };
-        await SendAsync(response, cancellation: ct);
-    }
+      Report = report
+    };
+    await SendAsync(response, cancellation: ct);
+  }
 }

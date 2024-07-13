@@ -127,5 +127,5 @@ Accept: application/json
 
 ###
 # TOP Sales
-GET {{RiverBooks_WebAddress}}/topsales
+GET {{RiverBooks_WebAddress}}/topsales?month=7&year=2024
 Accept: application/json
