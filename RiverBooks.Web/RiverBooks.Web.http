@@ -54,7 +54,7 @@ Content-Type: application/json
 }
 
 ###
-@token=
+@token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbEFkZHJlc3MiOiJrYXplZW1AdGVzdC5jb20iLCJpYXQiOjE3MjA4NjcwMTQsImV4cCI6MTcyMDg3MDYxNCwibmJmIjoxNzIwODY3MDE0fQ.0_bsvNVW2o-zTYXHWSna6-Hso2RSqedr9COliNcZu2Q
 ###
 # Add item to cart
 POST {{RiverBooks_WebAddress}}/cart
@@ -119,3 +119,7 @@ Content-Type: application/json
 {}
 
 ###
+
+# Get Email List
+GET {{RiverBooks_WebAddress}}/emails
+Accept: application/json
