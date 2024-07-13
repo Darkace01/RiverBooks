@@ -1,6 +1,7 @@
 ﻿using MailKit.Net.Smtp;
 using Microsoft.Extensions.Logging;
 using MimeKit;
+using RiverBooks.EmailSending.EmailBackgroundService;
 
 namespace RiverBooks.EmailSending;
 public class MimeKitEmailSender(ILogger<MimeKitEmailSender> logger) : ISendEmail

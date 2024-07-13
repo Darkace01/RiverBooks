@@ -3,8 +3,11 @@ using MediatR;
 using RiverBooks.EmailSending.Contracts;
 
 namespace RiverBooks.EmailSending.Integrations;
-
-internal class QueueEmailInOutboxSendEmailCommandHandler(IOutboxService outboxService) :
+internal interface IQueueEmailsInOutboxService
+{
+  Task QueueEmailForSending(EmailOutboxEntity entity);
+}
+internal class QueueEmailInOutboxSendEmailCommandHandler(IQueueEmailsInOutboxService outboxService) :
   IRequestHandler<SendEmailCommand, Result<Guid>>
 {
   public async Task<Result<Guid>> Handle(SendEmailCommand request, CancellationToken cancellationToken)

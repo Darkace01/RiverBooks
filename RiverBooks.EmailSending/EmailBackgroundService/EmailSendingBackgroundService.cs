@@ -1,13 +1,13 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace RiverBooks.EmailSending;
+namespace RiverBooks.EmailSending.EmailBackgroundService;
 
 internal class EmailSendingBackgroundService(ILogger<EmailSendingBackgroundService> logger, ISendEmailsFromOutboxService sendEmailsFromOutboxService) : BackgroundService
 {
   protected override async Task ExecuteAsync(CancellationToken stoppingToken)
   {
-    int delayMilliseconds = 10_000; // 10 seconds
+    var delayMilliseconds = 10_000; // 10 seconds
 
     logger.LogInformation("{ServiceName} is starting.", nameof(EmailSendingBackgroundService));
 
