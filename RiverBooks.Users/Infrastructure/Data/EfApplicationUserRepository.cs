@@ -6,6 +6,12 @@ namespace RiverBooks.Users.Infrastructure.Data;
 
 internal class EfApplicationUserRepository(UsersDbContext _dbContext) : IApplicationUserRepository
 {
+  public async Task<ApplicationUser> GetUserByIdAsync(Guid userId, CancellationToken cancellationToken = default)
+  {
+    return await _dbContext.ApplicationUsers
+                          .SingleAsync(u => u.Id == userId.ToString(), cancellationToken);
+  }
+
   public async Task<ApplicationUser> GetUserWithAddressByEmailAsync(string emailAddress, CancellationToken cancellationToken = default)
   {
     return await _dbContext.ApplicationUsers

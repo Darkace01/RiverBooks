@@ -9,21 +9,27 @@ public class MimeKitEmailSender(ILogger<MimeKitEmailSender> logger) : ISendEmail
   {
     logger.LogInformation("Attempting to send email to {To} from {From} with subject {Subject}", to, from, subject);
 
-    using var client = new SmtpClient(); // use localhost and a test server
+    using (var client = new SmtpClient())
+    {  // use localhost and a test server
 
-    await client.ConnectAsync(Constants.EMAIL_SERVER, 25, false); //TODOs: fetch from config
-    var message = new MimeMessage();
-    message.From.Add(new MailboxAddress(from, from));
-    message.To.Add(new MailboxAddress(to, to));
-    message.Subject = subject;
-    message.Body = new TextPart("plain")
-    {
-      Text = body
-    };
+      await client.ConnectAsync(Constants.EMAIL_SERVER, 25, false); //TODOs: fetch from config
+      var message = new MimeMessage();
+      message.From.Add(new MailboxAddress(from, from));
+      message.To.Add(new MailboxAddress(to, to));
+      message.Subject = subject;
+      message.Body = new TextPart("plain")
+      {
+        Text = body
+      };
 
-    await client.SendAsync(message);
-    logger.LogInformation("Email sent to {To} from {From} with subject {Subject}", to, from, subject);
+      await client.SendAsync(message);
+      logger.LogInformation("Email sent to {To} from {From} with subject {Subject}", to, from, subject);
 
-    await client.DisconnectAsync(true);
+#pragma warning disable S6966 // Awaitable method should be used
+      client.Disconnect(true);
+#pragma warning restore S6966 // Awaitable method should be used
+
+      logger.LogInformation("Sent to {To}", to);
+    }
   }
 }

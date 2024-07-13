@@ -19,5 +19,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OrderProcessing.Contracts\RiverBooks.OrderProcessing.Contracts.csproj" />
+    <ProjectReference Include="..\RiverBooks.EmailSending.Contracts\RiverBooks.EmailSending.Contracts.csproj" />
   </ItemGroup>
 </Project>
