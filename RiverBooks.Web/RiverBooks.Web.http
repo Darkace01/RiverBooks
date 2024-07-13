@@ -54,7 +54,7 @@ Content-Type: application/json
 }
 
 ###
-@token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbEFkZHJlc3MiOiJrYXplZW1AdGVzdC5jb20iLCJpYXQiOjE3MjA4NjcwMTQsImV4cCI6MTcyMDg3MDYxNCwibmJmIjoxNzIwODY3MDE0fQ.0_bsvNVW2o-zTYXHWSna6-Hso2RSqedr9COliNcZu2Q
+@token=eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJFbWFpbEFkZHJlc3MiOiJrYXplZW1AdGVzdC5jb20iLCJpYXQiOjE3MjA4Nzg2NzAsImV4cCI6MTcyMDg4MjI3MCwibmJmIjoxNzIwODc4NjcwfQ.1KRBFszI9DnZH6y8eS7AOITA6Rub5WObA4lliVX7qS4
 ###
 # Add item to cart
 POST {{RiverBooks_WebAddress}}/cart
@@ -63,7 +63,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 {
   "bookId": "{{BookID}}",
-  "quantity": 5
+  "quantity": 4
 }
 
 ###
@@ -128,4 +128,9 @@ Accept: application/json
 ###
 # TOP Sales
 GET {{RiverBooks_WebAddress}}/topsales?month=7&year=2024
+Accept: application/json
+
+###
+# TOP Sales 2
+GET {{RiverBooks_WebAddress}}/topsales2?month=7&year=2024
 Accept: application/json
