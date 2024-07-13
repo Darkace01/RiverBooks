@@ -123,3 +123,9 @@ Content-Type: application/json
 # Get Email List
 GET {{RiverBooks_WebAddress}}/emails
 Accept: application/json
+
+
+###
+# TOP Sales
+GET {{RiverBooks_WebAddress}}/topsales
+Accept: application/json
